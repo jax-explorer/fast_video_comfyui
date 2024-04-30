@@ -19,9 +19,6 @@ class FastImageListToImageBatch:
         if len(images) <= 1:
             return (images,)
         else:
-            image1 = images[0]
-            for image2 in images[1:]:
-                # if image1.shape[1:] != image2.shape[1:]:
-                #     image2 = comfy.utils.common_upscale(image2.movedim(-1, 1), image1.shape[2], image1.shape[1], "lanczos", "center").movedim(1, -1)
-                image1 = torch.cat((image1, image2), dim=0)
-            return (image1,)
+            combined_image = torch.stack(images, dim=0)  # This stacks along a new first dimension
+            combined_image = combined_image.view(-1, *images[0].shape[1:])  # Reshape to flatten the first two dimensions
+            return (combined_image,)
