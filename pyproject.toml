@@ -1,0 +1,14 @@
+[project]
+name = "fast_video_comfyui"
+description = "Nodes:FastImageListToImageBatch"
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/jax-explorer/fast_video_comfyui"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "fast_video_comfyui"
+Icon = ""
